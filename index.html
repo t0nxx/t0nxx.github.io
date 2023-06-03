@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Submit</title>
+	<style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .content{
+            height: 100vh;
+            width: 100vw;
+            background-image: url('/bg.png');     
+background-size: contain;    
+background-repeat: no-repeat;   
+           
+        }
+
+        form{
+            display: flex;
+			flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            width: 500px;
+            height: 500px;
+            top: 100px;
+            left: 555px;
+            position: relative;
+            
+
+        }
+        .fil{
+    padding: 1px 15px;
+    width: 250px;
+    display: flex;
+    position: absolute;
+    border-radius: 5px;
+    border-color: white;
+    height: 24px;
+           
+            
+        }
+
+        .click{
+            background-color:#fd7000;
+            color: #fff;
+            border: none;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin: 5px;
+            width: 190px;
+            position: absolute;
+            margin-left: 50px;
+        }
+
+        .click:hover{
+            background-color: #a86833;
+            cursor: pointer;
+        }
+
+ 
+
+       
+	
+	</style>
+</head>
+<body>
+	<div class="content">
+        <form method="post" action="" name="names" id="names">
+           
+            <input style="top: 10%;" class="fil" type="text" name="name"  required>
+
+            <input style="top: 22%;" class="fil" type="text" name="speciality"  required>
+
+            <input style="top: 34%;" class="fil" type="text" name="title"  required>
+
+
+            <input style="top: 46%;" class="fil" type="text" name="email"  required>
+
+            <textarea  style="top: 60%; height: 60px;" class="fil"  name="comments"  required></textarea>
+
+            <button style="top: 78%;" class="click">Register</button>
+            
+        </form>
+      
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbysC6Yr7LojLJ3OeeCCGOveIJCnY_bwijA1WHY21ikdUhK76zEBaAmbTelvRT4yKus/exec'
+        const form = document.forms['names']
+      
+        form.addEventListener('submit', e => {
+            console.log(form);
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thank you! your form is submitted successfully." ))
+            .then(() => {  window.location.reload(); })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    <br>
+</body>
+</html>
+
